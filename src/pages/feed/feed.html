@@ -1,0 +1,53 @@
+<!--
+  Generated template for the FeedPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>feed</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+<ion-card>
+
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="assets/imgs/Punch.png">
+    </ion-avatar>
+    <h2>{{objeto_feed.titulo}}</h2>
+    <p>{{objeto_feed.data}}</p>
+  </ion-item>
+
+  <img src="assets/imgs/Suporte_183.jpg">
+
+  <ion-card-content>
+    <p>{{objeto_feed.descricao}}</p>
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-left clear small>
+        <ion-icon name="thumbs-up"></ion-icon>
+        <div>{{objeto_feed.likes}} Likes</div>
+      </button>
+    </ion-col>
+    <ion-col>
+      <button ion-button icon-left clear small>
+        <ion-icon name="text"></ion-icon>
+        <div>{{objeto_feed.coments}} Comments</div>
+      </button>
+    </ion-col>
+    <ion-col center text-center>
+      <ion-note>
+        {{objeto_feed.hora_coment}}
+      </ion-note>
+    </ion-col>
+  </ion-row>
+
+</ion-card>
+</ion-content>
