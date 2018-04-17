@@ -34,14 +34,21 @@ export class FeedPage {
   	) {
   }
 
+  public result: any;
+
   ionViewDidLoad() {
-    this.movieProvider.getLatestMovies().subscribe(
+    this.movieProvider.getPopularMovies().subscribe(
 								data => {
-									const resposta = JSON.parse((data as any)._body);
-									console.log(resposta);
+									const response = (data as any);
+									const resposta = JSON.parse(response._body);
+									this.result=resposta.results;
+									console.log(resposta.results);
 									 }, error =>{
 									 	console.log(error);
 									 }
 								)
   }
+
+
+
 }

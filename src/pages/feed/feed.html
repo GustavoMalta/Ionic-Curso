@@ -13,39 +13,39 @@
 
 
 <ion-content>
-<ion-card>
+<ion-card  *ngFor="let p of result">
 
   <ion-item>
     <ion-avatar item-start>
       <img src="assets/imgs/Punch.png">
     </ion-avatar>
-    <h2>{{objeto_feed.titulo}}</h2>
-    <p>{{objeto_feed.data}}</p>
+    <h2>{{p.original_title}}</h2>
+
+    <p>{{p.release_date}}</p>
   </ion-item>
 
-  <img src="assets/imgs/Suporte_183.jpg">
+  <img src="https://image.tmdb.org/t/p/w500{{p.poster_path}}">
 
   <ion-card-content>
-    <p>{{objeto_feed.descricao}}</p>
-    <p>{{resposta.original_title}}</p>
+    <p>{{p.overview}}</p>
   </ion-card-content>
 
   <ion-row>
     <ion-col>
       <button ion-button icon-left clear small>
         <ion-icon name="thumbs-up"></ion-icon>
-        <div>{{objeto_feed.likes}} Likes</div>
+        <div>{{p.popularity}} Likes</div>
       </button>
     </ion-col>
     <ion-col>
       <button ion-button icon-left clear small>
         <ion-icon name="text"></ion-icon>
-        <div>{{objeto_feed.coments}} Comments</div>
+        <div>{{p.adult}} Comments</div>
       </button>
     </ion-col>
     <ion-col center text-center>
       <ion-note>
-        {{objeto_feed.hora_coment}}
+        {{p.id}}
       </ion-note>
     </ion-col>
   </ion-row>

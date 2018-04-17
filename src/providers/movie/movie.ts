@@ -33,8 +33,12 @@ export class MovieProvider {
     console.log('Hello MovieProvider Provider');
   }
 
-  getLatestMovies(){
+  getLatestMovie(){
   	return this.http.get(this.apiPath + "/movie/latest?api_key=" + this.apiKey + '&language=pt-BR');
+  }
+
+  getPopularMovies(){
+    return this.http.get(this.apiPath + "/movie/popular?api_key=" + this.apiKey + '&language=pt-BR');
   }
 
 
