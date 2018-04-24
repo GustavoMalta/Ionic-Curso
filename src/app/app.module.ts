@@ -43,7 +43,7 @@ import { MovieProvider } from '../providers/movie/movie';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MovieProvider
+    //MovieProvider 'nao precisa ser global'
   ]
 })
 export class AppModule {}
