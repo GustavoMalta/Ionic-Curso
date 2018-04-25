@@ -17,7 +17,7 @@ export class ConfigProvider {
 
 
   getConfigData(): any{  //recupera os dados
-    return localStorage.getItem(config_key) || {}
+    return localStorage.getItem(config_key)
   }
 
   setConfigData(showSlide?: boolean, name?: string, username?: string){ //grava os dados

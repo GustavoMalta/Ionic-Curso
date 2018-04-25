@@ -15,7 +15,8 @@ import { ConfigProvider } from '../providers/config/config';
     ]
 })
 export class MyApp {
-  rootPage:any = IntroPage;
+  //rootPage:any = IntroPage;
+  rootPage:any;
 
   constructor(platform: Platform, 
               statusBar: StatusBar, 
