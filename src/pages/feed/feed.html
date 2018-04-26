@@ -35,10 +35,7 @@
 
   <ion-row>
     <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="thumbs-up"></ion-icon>
-        <div>{{p.popularity}} Likes </div>
-      </button>
+      <button ion-button icon-left clear small>Detalhes </button>
     </ion-col>
     <ion-col>
       <button ion-button icon-left clear small>
@@ -52,6 +49,7 @@
       </ion-note>
     </ion-col>
   </ion-row>
+  <button ion-button block (click)="detalhes(p.id)">Detalhes</button>
 
 </ion-card>
 </ion-content>

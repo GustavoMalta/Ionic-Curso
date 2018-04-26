@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MovieProvider } from '../../providers/movie/movie';
 import { LoadingController } from 'ionic-angular';
+import { FilmeDetalhesPage } from '../filme-detalhes/filme-detalhes';
+
 /**
  * Generated class for the FeedPage page.
  *
@@ -36,9 +38,8 @@ import { LoadingController } from 'ionic-angular';
  	}
 
  	public result: any;
- 	public loader:any;
+ 	public loader: any;
  	public refresher = null;
- 	public isRefreching:boolean;
 
  	iniciaLoad() {
  		this.loader = this.loadingCtrl.create({
@@ -83,10 +84,12 @@ carregaFilmes(){
 			}
 		}
 		)
+}
 
-	
 
+detalhes(id){
 
+	this.navCtrl.push(FilmeDetalhesPage, id);
 }
 
 }

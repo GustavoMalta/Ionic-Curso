@@ -12,6 +12,7 @@ import { IntroPageModule } from '../pages/intro/intro.module';
 import { SetupPageModule } from '../pages/setup/setup.module';
 import { SobrePageModule } from '../pages/sobre/sobre.module';
 import { PerfilPageModule } from '../pages/perfil/perfil.module';
+import { FilmeDetalhesPageModule } from '../pages/filme-detalhes/filme-detalhes.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -35,7 +36,8 @@ import { MovieProvider } from '../providers/movie/movie';
     HttpModule,
     SetupPageModule,
     PerfilPageModule,
-    SobrePageModule
+    SobrePageModule,
+    FilmeDetalhesPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

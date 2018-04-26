@@ -26,7 +26,7 @@ https://api.themoviedb.org/3/movie/550?api_key=bbab2f99d4a8e2d9b74c77a89e7941f1
 @Injectable()
 export class MovieProvider {
 	private apiPath = "https://api.themoviedb.org/3";
-	private apiKey = "bbab2f99d4a8e2d9b74c77a89e7941f1";
+	private apiKey = "?api_key=bbab2f99d4a8e2d9b74c77a89e7941f1";
 
 
   constructor(public http: Http) {
@@ -34,12 +34,15 @@ export class MovieProvider {
   }
 
   getLatestMovie(){
-  	return this.http.get(this.apiPath + "/movie/latest?api_key=" + this.apiKey + '&language=pt-BR');
+  	return this.http.get(this.apiPath + "/movie/latest" + this.apiKey + '&language=pt-BR');
   }
 
   getPopularMovies(){
-    return this.http.get(this.apiPath + "/movie/popular?api_key=" + this.apiKey + '&language=pt-BR');
+    return this.http.get(this.apiPath + "/movie/popular" + this.apiKey + '&language=pt-BR');
   }
 
-
+  getMovieDetails(idMovie){
+  return this.http.get (this.apiPath + "/movie/" + idMovie + this.apiKey + '&language=pt-BR');
+  }
+  
 }
