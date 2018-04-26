@@ -13,7 +13,10 @@
 
 
 <ion-content>
-<ion-card  *ngFor="let p of result">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+   <ion-refresher-content></ion-refresher-content>
+ </ion-refresher>
+ <ion-card  *ngFor="let p of result">
 
   <ion-item>
     <ion-avatar item-start>
