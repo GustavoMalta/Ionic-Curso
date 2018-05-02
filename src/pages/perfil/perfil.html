@@ -18,5 +18,8 @@
 
 <ion-content padding>
 	<h2>Pagina Perfil</h2>
+  <br>
+  <button ion-button small (click)="tirarFoto()">Imagem</button>
+  <img *ngIf="img" [src]="img" alt="">
 
 </ion-content>
