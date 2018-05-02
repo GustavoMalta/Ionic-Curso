@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MovieProvider } from '../../providers/movie/movie';
-import { LoadingController } from 'ionic-angular';
+import { LoadingController, } from 'ionic-angular';
 import { FilmeDetalhesPage } from '../filme-detalhes/filme-detalhes';
 
 /**
@@ -17,18 +17,9 @@ import { FilmeDetalhesPage } from '../filme-detalhes/filme-detalhes';
  	templateUrl: 'feed.html',
  	providers: [ MovieProvider ],
  })
+
  export class FeedPage {
-
- 	public objeto_feed = {
- 		titulo: 'Clint Estwood',
- 		data: 'November 5, 1985',
- 		descricao: 'Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
- 		likes: 42,
- 		coments: 99,
- 		hora_coment: "13h Ago"
-
- 	}
-
+ 	
  	constructor(
  		public navCtrl: NavController, 
  		public navParams: NavParams,
@@ -45,6 +36,7 @@ import { FilmeDetalhesPage } from '../filme-detalhes/filme-detalhes';
  	public infiniteScroll;
  	private voltaDetalhes:boolean=false;
 
+
  	iniciaLoad() {
  		this.loader = this.loadingCtrl.create({
  			content: "Carregando Filmes..."
@@ -57,23 +49,22 @@ import { FilmeDetalhesPage } from '../filme-detalhes/filme-detalhes';
 
  	doRefresh(refresher) {
  		this.page=1;
+ 		this.lastPage=null;
  		this.refresher=refresher;
  		this.carregaFilmes();
-
  	}
 
 
   ionViewDidEnter() { //'Entrer' para carregar os filmes sempre que entrar. o'Load' carrega so uma vez
   //this.page=1;  
   this.carregaFilmes();
-  this.lastPage=this.page;
-
   this.voltaDetalhes = false;
 }
 
 carregaFilmes(){
 	if (this.voltaDetalhes || this.lastPage== this.page){}else{
 		this.iniciaLoad();
+		this.lastPage=this.page;
 		this.movieProvider.getPopularMovies(this.page).subscribe(
 			data => {
 				const response = (data as any);
