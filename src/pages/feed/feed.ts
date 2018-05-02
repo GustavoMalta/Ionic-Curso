@@ -41,7 +41,9 @@ import { FilmeDetalhesPage } from '../filme-detalhes/filme-detalhes';
  	public loader: any;
  	public refresher = null;
  	public page:number =1;
+ 	public lastPage:number;
  	public infiniteScroll;
+ 	private voltaDetalhes:boolean=false;
 
  	iniciaLoad() {
  		this.loader = this.loadingCtrl.create({
@@ -54,67 +56,64 @@ import { FilmeDetalhesPage } from '../filme-detalhes/filme-detalhes';
  	}
 
  	doRefresh(refresher) {
+ 		this.page=1;
  		this.refresher=refresher;
  		this.carregaFilmes();
 
  	}
 
+
   ionViewDidEnter() { //'Entrer' para carregar os filmes sempre que entrar. o'Load' carrega so uma vez
-  this.page=1;
-  this.result=null;
+  //this.page=1;  
   this.carregaFilmes();
+  this.lastPage=this.page;
+
+  this.voltaDetalhes = false;
 }
 
 carregaFilmes(){
-	this.iniciaLoad();
-	this.movieProvider.getPopularMovies(this.page).subscribe(
-		data => {
-			const response = (data as any);
-			const resposta = JSON.parse(response._body);
-			//if(infinitPage){
-				
+	if (this.voltaDetalhes || this.lastPage== this.page){}else{
+		this.iniciaLoad();
+		this.movieProvider.getPopularMovies(this.page).subscribe(
+			data => {
+				const response = (data as any);
+				const resposta = JSON.parse(response._body);
 				if (this.page>1){
 					this.result=this.result.concat(resposta.results);
 					this.infiniteScroll.complete();
 					this.terminaLoad();
-				}else{
+					console.log('Infinit Scroll CF'+ this.page);
+				}else{					
 					this.result=resposta.results;
 					this.terminaLoad();
+					console.log('Carrega Filmes'+ this.page);
 					if(this.refresher != null){ //para nao dar o .compete antes de ter algum dado na variavel, sem usar outra variavel para verificação
 						this.refresher.complete();
 						this.refresher = null;
 					}
 				}
-		/*	}else{
-				this.result=resposta.results;
-				console.log("teste");
+			},error =>{
+				console.log(error);
+				this.terminaLoad();
+				if(this.refresher != null){ 
+					this.refresher.complete();
+					this.refresher = null;
+				}
 			}
-			console.log(this.result);
-			this.terminaLoad();
-			if(this.refresher != null){ //para nao dar o .compete antes de ter algum dado na variavel, sem usar outra variavel para verificação
-				this.refresher.complete();
-				this.refresher = null;
-			}*/
-		},error =>{
-			console.log(error);
-			this.terminaLoad();
-			if(this.refresher != null){ 
-				this.refresher.complete();
-				this.refresher = null;
-			}
-		}
-		)
+			)
+	}
 }
 
 
 detalhes(id){
 	this.navCtrl.push(FilmeDetalhesPage, id);
+	this.voltaDetalhes = true;
 }
 
 doInfinite(infiniteScroll) {
 	this.infiniteScroll = infiniteScroll;
 	this.page++;
-	console.log('Begin async operation'+ this.page);
+	console.log('Infinit Scroll'+ this.page);
 	this.carregaFilmes();
 }
 }

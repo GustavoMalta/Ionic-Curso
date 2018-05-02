@@ -34,13 +34,10 @@ import { MovieProvider } from '../../providers/movie/movie'
  				const response = (data as any);
  				const resposta = JSON.parse(response._body);
  				this.detalhe=resposta;
- 				console.log(this.detalhe);
  			}, error =>{
  				console.log(error);
  			}
  			)
-
- 		console.log('ionViewDidLoad FilmeDetalhesPage');
  	}
 
  }
