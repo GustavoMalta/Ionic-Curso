@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ConfigProvider {
 
   private config = {
-    showSlide: true,
+    showSlide: '',
     name:"",
     username:""
   }
@@ -16,17 +16,15 @@ export class ConfigProvider {
   }
 
 
-  getConfigData(): any{  //recupera os dados
-    return localStorage.getItem(config_key)
+  getConfigData(): JSON{  //recupera os dados
+    return JSON.parse(localStorage.getItem(config_key));
   }
 
-  setConfigData(showSlide?: boolean, name?: string, username?: string){ //grava os dados
+  setConfigData(showSlide?: boolean ){//name?: string, username?: string){ //grava os dados
     let config = {
-        showSlide: false,
-        name:"",
-        username:""
+        showSlide: showSlide
     };
-    
+    /*
     if(showSlide){
       config.showSlide=showSlide;
     }
@@ -37,7 +35,7 @@ export class ConfigProvider {
 
     if(username){
       config.username=username;
-    }
+    }*/
 
     localStorage.setItem(config_key,JSON.stringify(config))
   }

@@ -14,7 +14,7 @@
     conteudo
     <ion-item>
        
-      <ion-toggle>Com ion-item1</ion-toggle> 
+      <ion-toggle [(ngModel)]="config" (ionChange)="checkConfig()"></ion-toggle> 
    
  </ion-item>
  
