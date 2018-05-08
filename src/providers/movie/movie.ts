@@ -37,8 +37,8 @@ export class MovieProvider {
   	return this.http.get(this.apiPath + "/movie/latest" + this.apiKey + '&language=pt-BR');
   }
 
-  getPopularMovies(){
-    return this.http.get(this.apiPath + "/movie/popular" + this.apiKey + '&language=pt-BR');
+  getPopularMovies(page){
+    return this.http.get(this.apiPath + "/movie/popular" + this.apiKey + '&language=pt-BR&page='+page);
   }
 
   getMovieDetails(idMovie){
