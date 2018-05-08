@@ -29,10 +29,10 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
 
       let config = configProviver.getConfigData();
-      config=config.showSlide;
+     // config=config.showSlide;
       console.log('antes>'+config);
 
-        if (config == true){
+        if (config.showSlide == true || config == null){
           this.rootPage = IntroPage;
           configProviver.setConfigData(false);
         }else{
