@@ -32,7 +32,7 @@ export class MyApp {
      // config=config.showSlide;
       console.log('antes>'+config);
 
-        if (config.showSlide == true || config == null){
+        if (config == null){
           this.rootPage = IntroPage;
           configProviver.setConfigData(false);
         }else{
